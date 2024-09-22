@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/django-app/
+    destination: /home/ubuntu/deploy/
     overwrite: yes
 hooks:
   AfterInstall:
