@@ -26,11 +26,8 @@ fi
 sudo systemctl enable gunicorn
 
 # Nginx config
-if [ -f /etc/nginx/sites-available/default ]; then 
 sudo rm -rf /etc/nginx/sites-available/default
-else
 sudo cp -r /home/ubuntu/django-app/scripts/default /etc/nginx/sites-available/
-fi
 sudo gpasswd -a www-data ubuntu
 
 # Restart Gunicorn and nginx
