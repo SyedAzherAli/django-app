@@ -22,7 +22,8 @@ sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.socket /etc/systemd/system/g
 sudo systemctl enable gunicorn
 
 # Nginx config
-sudo cp -r /home/ubuntu/django-app/scripts/default /etc/nginx/sites-availabe/default
+sudo rm -rf /etc/nginx/sites-available/default
+sudo cp -r /home/ubuntu/django-app/scripts/default /etc/nginx/sites-available/
 sudo gpasswd -a www-data ubuntu
 
 # Restart Gunicorn and nginx
