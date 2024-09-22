@@ -18,7 +18,7 @@ python manage.py collectstatic --noinput
 # Gunicron config
 sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.socket /etc/systemd/system/gunicorn.service
 sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.service /etc/systemd/system/gunicorn.service
-sudo cp -r /home/ubuntu/django-app/scripts/gunicron.socket /etc/systemd/system/gunicorn.socket
+sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.socket /etc/systemd/system/gunicorn.socket
 sudo systemctl enable gunicorn
 
 # Nginx config
