@@ -31,5 +31,6 @@ sudo cp -r /home/ubuntu/django-app/scripts/default /etc/nginx/sites-available/
 sudo gpasswd -a www-data ubuntu
 
 # Restart Gunicorn and nginx
+sudo systemctl deemon-reload
 sudo systemctl restart gunicorn
 sudo systemctl restart nginx
