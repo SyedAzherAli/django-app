@@ -1,4 +1,7 @@
 #!/bin/bash
+# Stop pervious 
+sudo systemctl stop gunicorn 
+sudo systemctl stop nginx 
 
 # Go to the application directory
 cd /home/ubuntu/django-app
@@ -20,14 +23,15 @@ if [ -f /etc/systemd/system/gunicorn.socket ] || [ -f /etc/systemd/system/gunico
 sudo rm -rf /etc/systemd/system/gunicorn.socket 
 sudo rm -rf /etc/systemd/system/gunicorn.service
 else
-sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.socket /etc/systemd/system/gunicorn.socket
-sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.service /etc/systemd/system/gunicorn.service
+sudo cp -r /home/ubuntu/django-app/gunicorn.socket /etc/systemd/system/gunicorn.socket
+sudo cp -r /home/ubuntu/django-app/gunicorn.service /etc/systemd/system/gunicorn.service
 fi
 sudo systemctl enable gunicorn
+sudo systemctl start gunicorn 
 
 # Nginx config
 sudo rm -rf /etc/nginx/sites-available/default
-sudo cp -r /home/ubuntu/django-app/scripts/default /etc/nginx/sites-available/
+sudo cp -r /home/ubuntu/django-app/default /etc/nginx/sites-available/
 sudo gpasswd -a www-data ubuntu
 
 # Restart Gunicorn and nginx
