@@ -3,27 +3,34 @@
 # Go to the application directory
 cd /home/ubuntu/django-app
 
-# Activate the virtual environment
-source venv/bin/activate
+# Installing python env 
+python3 -m venv venv 
 
 # Install dependencies
 venv/bin/pip install -r requirements.txt
 
 # Run migrations
-python manage.py migrate
+venv/bin/python manage.py migrate
 
 # Collect static files
-python manage.py collectstatic --noinput
+venv/bin/python manage.py collectstatic --noinput
 
 # Gunicron config
-sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.socket /etc/systemd/system/gunicorn.service
-sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.service /etc/systemd/system/gunicorn.service
+if [ -f /etc/systemd/system/gunicorn.socket ] || [ -f /etc/systemd/system/gunicorn.service ]; then 
+sudo rm -rf /etc/systemd/system/gunicorn.socket 
+sudo rm -rf /etc/systemd/system/gunicorn.service
+else
 sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.socket /etc/systemd/system/gunicorn.socket
+sudo cp -r /home/ubuntu/django-app/scripts/gunicorn.service /etc/systemd/system/gunicorn.service
+fi
 sudo systemctl enable gunicorn
 
 # Nginx config
+if [ -f /etc/nginx/sites-available/default ]; then 
 sudo rm -rf /etc/nginx/sites-available/default
+else
 sudo cp -r /home/ubuntu/django-app/scripts/default /etc/nginx/sites-available/
+fi
 sudo gpasswd -a www-data ubuntu
 
 # Restart Gunicorn and nginx
