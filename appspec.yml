@@ -4,6 +4,8 @@ files:
   - source: /
     destination: /home/ubuntu/django-app/
     overwrite: yes
+permissions:
+  - object:
 hooks:
   AfterInstall:
     - location: scripts/deploy.sh
