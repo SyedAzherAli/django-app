@@ -38,3 +38,10 @@ sudo gpasswd -a www-data ubuntu
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 sudo systemctl restart nginx
+
+# Create the superuser using Django manage.py
+echo "Creating superuser..."
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | venv/bin/python manage.py shell
+
+echo "Superuser created successfully!"
+
