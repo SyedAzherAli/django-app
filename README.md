@@ -300,4 +300,4 @@ Navigate to Jenkins at `<IP>:8080`, select your project, and click **Build Now**
 - Ensure security best practices are followed throughout the setup.
 
 ---
-- **For Brief Implementation follow these notion documentation**: [Django Application CI/CD Pipeline with Jenkins](https://www.notion.so/syedayaanali/Django-project-10552550cb2c808f9d95fd1984f3fbe1)
+- **For Brief Implementation follow these Blog**: [Django Application CI/CD Pipeline with Jenkins](https://projects-devops.hashnode.dev/djangoops#heading-part-13-its-time-for-a-tea-manual)
